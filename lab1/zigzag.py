@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/home/mirali/dev/cs101-spr2020")
+sys.path.append("//Users/mirali/dev/CS101")
 
 from cs101_libraries_py35.cs1robots import *
 create_world()
