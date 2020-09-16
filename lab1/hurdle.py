@@ -1,5 +1,5 @@
 import sys
-sys.path.append("//Users/mirali/dev/CS101")
+sys.path.append("/Users/mirali/dev/CS101")
 
 from cs101_libraries_py35.cs1robots import *
 load_world(filename="./worlds/hurdles1.wld")
