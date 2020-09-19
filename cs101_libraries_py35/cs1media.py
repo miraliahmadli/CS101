@@ -14,7 +14,7 @@
 #
 
 import sys as _sys
-import easygui as _easygui
+import cs101_libraries_py35.easygui as _easygui
 from PIL import Image as _Image
 from PIL import ImageTk as _ImageTk
 
