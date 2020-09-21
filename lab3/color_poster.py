@@ -13,7 +13,7 @@ yellow = (255, 255, 0)
 blue = (0, 0, 255)
 green = (0, 255, 0)
 
-image = load_picture('./images/panda.png')
+image = load_picture('./images/pikachu.jpg')
 width, height = image.size()
 
 def turn_bw(image, width, height):
@@ -29,8 +29,8 @@ def turn_bw(image, width, height):
     image.show()
 
 def turn_colors(image, width, height):
-    thr_bright = 170
-    thr_dark = 70
+    thr_bright = 170 # (510 / 3)
+    thr_dark = 70 # (255 / 3)
     for y in range(height):
         for x in range(width):
             r, g, b = image.get(x, y)
