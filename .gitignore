@@ -2,3 +2,4 @@ docs/
 cs101_libraries_py35/__pycache__/
 *.pyc
 *.DS_Store
+midterm/
