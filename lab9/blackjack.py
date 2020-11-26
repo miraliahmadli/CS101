@@ -2,7 +2,7 @@ import random
 from cs1graphics import *
 import itertools
 
-img_path = './images/'
+img_path = 'images/'
 
 suit_names = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
 face_names = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
@@ -22,8 +22,7 @@ class Card:
         self.value = value
         self.face = face
         self.image = image
-        self.hidden = state
-
+        self.state = state
 
 
 def create_deck(number = 1):
@@ -41,10 +40,12 @@ def create_deck(number = 1):
             value = 10
         else:
             value = int(face)
-        
-
-
-
+        img =  Image(img_path+suit+"_"+face + ".png")
+        state = True
+        card = Card(suit, face, value, img, state)
+        deck.append(card)
+    random.shuffle(deck)
+    return deck
 
 
 def hand_value(hand):
@@ -57,8 +58,6 @@ def hand_value(hand):
         val += card.value
 
     return val
-
-
 
 
 def card_string(card):
@@ -75,9 +74,6 @@ def card_string(card):
     return article + card.face + " of " + card.suit
 
 
-
-
-
 def ask_yesno(prompt):
     """
     Display the text prompt and let's the user enter a string.
@@ -91,9 +87,6 @@ def ask_yesno(prompt):
         print("I beg your pardon!")
         more = input(prompt)
     return more == 'y'
-
-
-
 
 
 def draw_card(dealer,player):
@@ -113,16 +106,32 @@ def draw_card(dealer,player):
     help('cs1graphics.Image') -> about Image(), moveTo(), setDepth()
     help('cs1graphics.Text') -> about Text(),moveTo(), setDepth()
     """
+    # hidden_img = Image(img_path+"back.png")
     depth = 100
     x0,y0 = 100,100
     x1,y1 = 100,300
+    ix = 30
 
     bj_board.clear()
-
-
-
-
-
+    for card in dealer:
+        if card.state:
+            card.image.moveTo(x0, y0)
+            card.image.setDepth(depth)
+        else:
+            img = Image(img_path+"Back.png")
+            img.moveTo(x0, y0)
+            img.setDepth(depth)
+        x0 += ix
+    
+    for card in player:
+        if card.state:
+            card.image.moveTo(x1, y1)
+            card.image.setDepth(depth)
+        else:
+            img = Image(img_path+"back.png")
+            img.moveTo(x1, y1)
+            img.setDepth(depth)
+        x1 += ix
 
 
 def main():
