@@ -97,9 +97,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-        
         lst = []
         for price in self.prices:
             d = price.date
@@ -133,9 +130,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-        
         lst = []
         for price in self.prices:
             d = price.date

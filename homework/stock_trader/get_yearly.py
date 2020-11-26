@@ -112,9 +112,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-        
         lst = []
         for price in self.prices:
             d = price.date
@@ -147,9 +144,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-
         lst = []
         for price in self.prices:
             d = price.date
@@ -183,9 +177,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-        
         lst = []
         for price in self.prices:
             d = price.date
@@ -221,9 +212,6 @@ class Stock:
         #################################################
         # YOUR CODE HERE
         #################################################
-        if date <= "2019-01-01":
-            return "Please check the date."
-        
         lst = []
         for price in self.prices:
             d = price.date
@@ -307,7 +295,6 @@ def convert_to_objects(stock_prices: List[Tuple[str, str, str, str, float, int]]
         market_list.append(market)
     
     return market_list
-
 
 
 if __name__ == "__main__":
