@@ -159,7 +159,6 @@ class Stock:
         return (U, L)
 
 
-
 class Market:
     """Market class."""
 
@@ -269,9 +268,14 @@ class Trader:
         #################################################
         # YOUR CODE HERE
         #################################################
+        if len(self.holdings) != 0:
+            return
         num_stock = self.balance // price
+        if num_stock ==0:
+            return
         self.holdings = (date, ticker, num_stock, price)
-        self.balance = round(self.balance - price * num_stock, 2)
+        self.balance -= price * num_stock
+        self.balance = round(self.balance, 2)
 
     def sell(self, ticker: str, price: float) -> None:
         """
@@ -287,10 +291,10 @@ class Trader:
         #################################################
         # YOUR CODE HERE
         #################################################
-        amount = 0
-        if self.holdings[1] == ticker:
-            amount = self.holdings[2] * price
-            self.holdings = tuple()
+        if len(self.holdings) == 0:
+            return
+        amount = self.holdings[2] * price
+        self.holdings = tuple()
         self.balance += amount
         self.balance = round(self.balance, 2)
 
@@ -349,15 +353,13 @@ class Trader:
                 dates.append((price.date, price.price))
         dates.sort()
 
-        buying = True
+        # buying = True
         for date, price in dates:
             U, L = stock.get_bollinger_bands(date)
-            if buying and price < L:
+            if price < L:
                 self.buy(ticker, price, date)
-                buying = False
-            elif not buying and price > U:
+            elif price > U:
                 self.sell(ticker, price)
-                buying = True
 
     def __repr__(self):
         return "<Trader %s>" % self.name
